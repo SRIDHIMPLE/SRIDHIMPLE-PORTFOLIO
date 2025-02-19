@@ -1,14 +1,90 @@
+:root {
+    /* Light Theme Colors (Default) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --accent-color: #663399;
+    --skill-color: #4c1d95;
+    --card-bg: #e9d5ff;
+    --nav-bg: rgba(255, 255, 255, 0.94);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Theme Colors */
+[data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --accent-color: #a78bfa;
+    --skill-color: white;
+    --card-bg: #3d3d3d;
+    --nav-bg: rgba(26, 26, 26, 0.94);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+
 /*--Html--*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* Theme Toggle Button Styles */
+.theme-toggle {
+    margin-left: 20px;
 }
 
+.theme-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.theme-btn:hover {
+    transform: rotate(180deg);
+    background-color: var(--card-bg);
+}
+
+/*--Scroll bar---*/
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 12px; 
+}
+
+/* Track (the background) */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;  /* Light grey background */
+    
+}
+
+/* Handle (the draggable part) */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #a25df0, #3d1761);  /* Gradient blue to green */
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #3d1562, #a926ce);  /* Darker gradient on hover */
+}
+
+
+
 body {
-    background-color: #ffffff;
+    background-color: var(--bg-primary);
     font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
 }
 
 /* Navigation Bar */
@@ -17,7 +93,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 15px 5%;
-    background-color: white;
+    background-color: var(--nav-bg);
     box-shadow: 5px 2px 4px rgba(188, 186, 186, 0.7);
     height: 65px;
     position: fixed;
@@ -25,18 +101,19 @@ nav {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.94); 
+    
+    transition: all 0.3s ease;
 }
 
 span{
-    color:  #663399;
+    color:  var(--accent-color);
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: 600;
     text-decoration: none;
-    color:  #000000; ;
+    color:  var(--text-primary) ;
     transition: transform 0.6s ease;
 }
 
@@ -56,7 +133,7 @@ span{
 
 .nav-links a {
     text-decoration: none;
-    color: #663399;
+    color: var(--accent-color);
     font-weight: 600;
     padding-bottom: 5px;
     position: relative;
@@ -72,13 +149,13 @@ span{
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #663399; 
+    background-color: var(--accent-color); 
     transition: width 0.3s ease;
     
 }
 
 .nav-links a:hover {
-    color: #663399;
+    color: var(--accent-color);
 }
 
 .nav-links a:hover::after {
@@ -96,7 +173,7 @@ span{
     width: 25px;
     height: 3px;
     margin: 5px auto;
-    background-color: #333;
+    background-color: var(--text-primary);
     transition: all 0.3s ease;
 }
 
@@ -201,7 +278,7 @@ span{
 }
 
 .hero-heading span {
-    color: #663399; /* Purple shade for "Sri" */
+    color: var(--accent-color); /* Purple shade for "Sri" */
 }
 
 .hero-subheading {
@@ -211,14 +288,14 @@ span{
 }
 
 .hero-subheading span {
-    color: #663399; /* Purple shade for "Frontend Developer" */
+    color:var(--accent-color); /* Purple shade for "Frontend Developer" */
 }
 
 .hero-description {
     font-size: 1rem;
     margin-top: 20px;
     line-height: 1.6;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 30px;
     max-width: 600px;
 }
@@ -232,8 +309,8 @@ span{
 .social-icon {
     width: 50px;
     height: 50px;
-    border: 2px solid #663399;
-    box-shadow: 2px 1px 5px #663399;
+    border: 2px solid var(--accent-color);
+    box-shadow: 2px 1px 5px var(--accent-color);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -305,7 +382,8 @@ span{
     }
 
     .hero-image {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
+    margin-top: 10px;
     }
 
     .social-icons {
@@ -367,12 +445,12 @@ position: relative;
 }
 .text-animation span::before {
 content: "Web Developer";
-color: #663399;
+color: var(--accent-color);
 animation: words 20s infinite;
 }
 .text-animation span::after {
 content: "";
-background-color: #ffffff;
+background-color: var(--bg-primary);
 position: absolute;
 width: calc(100% + 8px);
 height: 100%;
@@ -382,7 +460,7 @@ animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
 }
 @keyframes cursor {
 to {
-border-left: 2px solid purple;
+border-left: 5px solid rgb(195, 170, 209);
 }
 }
 @keyframes words {
@@ -446,6 +524,7 @@ width: calc(100% + 8px);
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 50px;
+    margin-top: 70px;
 }
 
 .timeline {
@@ -463,7 +542,7 @@ width: calc(100% + 8px);
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    border: 3px solid #663399;
+    border: 3px solid var(--accent-color);
     border-left: none;
     border-top: none;
     border-bottom: none;
@@ -483,11 +562,9 @@ width: calc(100% + 8px);
     background: #e9dcf8;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 3px solid #663399;
+    border: 3px solid var(--accent-color);
     box-shadow: 2px 3px 5px #c6b3da;
-    box-shadow: 0 0 5px #74589f, 0 0 8px #d1c6e0,
-    0 0 12px #a78bfa;
-    height: 200px;
+    box-shadow: var(--nav-bg)
 
 }
 
@@ -502,7 +579,7 @@ width: calc(100% + 8px);
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
-    border: 3px solid #663399;
+    border: 3px solid  var(--accent-color);
     box-shadow: 2px 3px 5px #c6b3da;
     box-shadow: 0 0 5px #74589f, 0 0 8px #d1c6e0,
     0 0 12px #a78bfa;
@@ -605,7 +682,7 @@ width: calc(100% + 8px);
             position: absolute;
             width: 100%;
             height: 100%;
-            background: #663399;
+            background: var(--accent-color);
             transform: rotate(0deg);
             transition: transform 0.3s ease;
             z-index: 1;
@@ -620,11 +697,14 @@ width: calc(100% + 8px);
             color: black;
             z-index: 2;
             display: flex;
+            align-items: center;
             flex-direction: column;
             justify-content: center;
             transition: transform 0.3s ease;
-            border: 2px solid #663399;
+            border: 2px solid var(--accent-color);
             box-shadow: 1px 1px 2px rgb(148, 44, 148);
+            
+            
             
         }
 
@@ -650,6 +730,7 @@ width: calc(100% + 8px);
             font-size: 1rem;
             line-height: 1.6;
             opacity: 0.9;
+            
         }
 
         /* Mobile Responsive Adjustments */
@@ -707,7 +788,7 @@ width: calc(100% + 8px);
         .skill-circle {
             width: 100%;
             height: 100%;
-            border: 3px solid #663399;
+            border: 3px solid var(--accent-color);
             border-radius: 50%;
             display: flex;
             flex-direction: column;
@@ -716,17 +797,17 @@ width: calc(100% + 8px);
             transition: all 0.3s ease;
             gap: 10px;
             padding: 20px;
-            box-shadow: 2px 1px 5px #663399;
+            box-shadow: 2px 1px 5px var(--accent-color);
         }
 
         .skill-icon {
             font-size: 2.5rem;
-            color: #4c1d95;
+            color: var(--skill-color);
             transition: all 0.3s ease;
         }
 
         .skill-name {
-            color: #4c1d95;
+            color: var(--skill-color);
             font-size: 1rem;
             font-weight: bold;
             text-align: center;
@@ -735,7 +816,7 @@ width: calc(100% + 8px);
 
         /* Hover Effects */
         .skill-circle:hover {
-        background-color: #663399;
+        background-color: var(--accent-color);
         opacity: 0.90;
         color: white;
         transform: scale(1.1) translateY(-5px);
@@ -826,12 +907,12 @@ width: calc(100% + 8px);
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #663399;
+    color: var(--accent-color);
 }
 
 .contact-subtext {
     font-size: 1.5rem;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 30px;
     line-height: 1.5;
 }
@@ -846,7 +927,7 @@ width: calc(100% + 8px);
     font-weight: bold;
     font-size: 1.1rem;
     transition: all 0.5s ease;
-    box-shadow: 2px 1px 5px #663399;
+    box-shadow: 2px 1px 5px var(--accent-color);
     transition: transform 0.9s ease;
 }
 
@@ -860,7 +941,7 @@ width: calc(100% + 8px);
     background: #e9d5ff;
     padding: 30px;
     border-radius: 20px;
-    border: 2px solid #663399;
+    border: 2px solid var(--accent-color);
     box-shadow: 0 0 10px #74589f, 0 0 20px #d1c6e0,
     0 0 25px #a78bfa;
     
@@ -878,7 +959,7 @@ width: calc(100% + 8px);
     background: white;
     font-size: 1rem;
     transition: all 0.3s ease;
-    border: 2px solid #663399;
+    border: 2px solid var(--accent-color);
 }
 
 .form-input:focus {
@@ -889,7 +970,7 @@ width: calc(100% + 8px);
 textarea.form-input {
     min-height: 150px;
     resize: vertical;
-    border: 2px solid #663399;
+    border: 2px solid var(--accent-color);
 }
 
 .submit-btn {
@@ -903,7 +984,7 @@ textarea.form-input {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 2px 1px 5px #663399;
+    box-shadow: 2px 1px 5px var(--accent-color);
     
 }
 
@@ -1038,6 +1119,7 @@ box-shadow: 0 0 5px #74589f, 0 0 8px #d1c6e0,
             padding: 15px;
             font-size: 1.5rem;
             font-weight: bold;
+            color: var(--bg-primary);
         }
 
         .project-description {

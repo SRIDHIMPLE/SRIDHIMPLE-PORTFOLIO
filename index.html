@@ -29,6 +29,11 @@
             <li><a href="#skills">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <div class="theme-toggle">
+            <button id="themeToggle" class="theme-btn">
+                <i class="ri-sun-line"></i>
+            </button>
+        </div>
         <div class="hamburger">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -38,7 +43,7 @@
 
 
     <!-------Hero Section-------->
-    <section class="hero-section">
+    <section class="hero-section" id="home">
         <div class="hero-container">
             <div class="hero-image">
                 <img src="./IMAGES/profile-pic.png" alt="Sri Dhimple" class="profile-image">
@@ -47,10 +52,10 @@
                 <h1 class="hero-heading">Hey It's <span>Sri</span></h1>
                 <h3 class="text-animation">I'm a <span></span></h3>
                 <p class="hero-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.
+                "Think of me as the bridge between design and functionality. I specialize in turning creative concepts into responsive, interactive realities. My code isn't just functional – it's crafted with scalability in mind, ensuring your website not only works flawlessly today but evolves seamlessly with your growing needs. When faced with challenges, I don't just seek solutions; I hunt for opportunities to innovate."
                 </p>
             <div class="social-icons">
-                <a href="#" class="social-icon" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/sridhimple-nuthalapati/" class="social-icon" aria-label="LinkedIn">
                 <i class="fab fa-linkedin-in"></i>
                 </a>
                 <a href="https://github.com/SRIDHIMPLE" class="social-icon" aria-label="GitHub">
@@ -67,7 +72,11 @@
             </div>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">Hire Me</a>
-                <a href="#resume" class="btn btn-secondary">Resume</a>
+                <!-- Direct download link -->
+                <a href="./Sridhimple_Resume.pdf" download="Sridhimple_Resume.pdf" class="btn btn-secondary">
+                    Download Resume
+                </a>
+                
             </div>
             </div>
         </div>
@@ -75,7 +84,7 @@
 
 
     <!------Education Section------->
-    <section class="education-section">
+    <section class="education-section" id= "education">
         <h1 class="section-title">Education</h1>
         <div class="timeline">
             <div class="timeline-item">
@@ -119,7 +128,7 @@
 
 
     <!-------Services Section-------->
-    <section class="services-section">
+    <section class="services-section" id="services">
         <h1 class="section-title">Services</h1>
         <div class="services-grid">
             <div class="service-card">
@@ -158,7 +167,7 @@
 
 
     <!-------Projects Section-------->
-    <section class="projects-section">
+    <section class="projects-section" id="projects">
         <h1 class="section-title">Projects</h1>
         
         <div class="projects-grid">
@@ -276,7 +285,7 @@
 
 
     <!-------Skills Section-------->
-    <section class="skills-section">
+    <section class="skills-section" id="skills">
         <h1 class="section-title">Skills</h1>
         
         <div class="skills-grid">
@@ -369,7 +378,7 @@
 
 
     <!-------Contact Me Section-------->
-    <section class="contact-section">
+    <section class="contact-section" id="contact">
         <h1 class="section-title">Contact Me</h1>
         <div class="contact-container">
             <div class="contact-text">
@@ -415,6 +424,34 @@
     hamburger.classList.remove("active");
     navLinks.classList.remove("active");
     }));
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+
+    function updateThemeIcon(theme) {
+        if (theme === 'dark') {
+            themeIcon.classList.remove('ri-sun-line');
+            themeIcon.classList.add('ri-moon-line');
+        } else {
+            themeIcon.classList.remove('ri-moon-line');
+            themeIcon.classList.add('ri-sun-line');
+        }
+    }
+
 </script>
 
 </body>
