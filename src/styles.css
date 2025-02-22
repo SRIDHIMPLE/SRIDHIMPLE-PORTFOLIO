@@ -315,7 +315,7 @@ span{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #663399;
+    color: var(--skill-color);
     font-size: 1.2rem;
     text-decoration: none;
     transition: transform 0.5s ease, background-color 0.3s ease;
